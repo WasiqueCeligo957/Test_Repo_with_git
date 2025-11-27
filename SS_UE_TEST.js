@@ -2,12 +2,13 @@
  * @NApiVersion 2.1
  * @NScriptType UserEventScript
  */
-define(['N/record'],(record)=>{
+define(['N/record', 'N/log'], (record, log) => {
+    const afterSubmit = (context) => {
+        const record = context.newRecord;
+        log.debug(`Track the record details`, $(record));
 
-const afterSubmit=(context)=>{
-
-}
-return{
-    afterSubmit: afterSubmit
-}
+    }
+    return {
+        afterSubmit: afterSubmit
+    }
 })
