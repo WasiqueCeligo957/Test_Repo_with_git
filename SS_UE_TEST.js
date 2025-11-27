@@ -3,6 +3,15 @@
  * @NScriptType UserEventScript
  */
 define(['N/record', 'N/log'], (record, log) => {
+    //add button on record in view mode
+    const beforeLoad=(context)=>{
+try{
+
+}catch(error){
+log.debug('capture error message', `${error.message}`);
+}
+    }
+    //aftersubmit function to do some activity
     const afterSubmit = (context) => {
         const get_record = context.newRecord;
         const record_type=get_record.type;
@@ -11,6 +20,7 @@ define(['N/record', 'N/log'], (record, log) => {
 
     }
     return {
+        beforeLoad: beforeLoad,
         afterSubmit: afterSubmit
     }
 })
