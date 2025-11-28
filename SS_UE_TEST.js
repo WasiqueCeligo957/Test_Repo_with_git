@@ -25,8 +25,14 @@ define(['N/record', 'N/log'], (record, log) => {
     const afterSubmit = (context) => {
         const get_record = context.newRecord;
         const record_type = get_record.type;
+        const record_id = get_record.id;
         log.debug('get_record', `record-:${get_record}`);
         log.debug('record type', `${record_type}`);
+        const load_record = get_record.load({
+            type: 'record_type',
+            id: record_id
+        });
+        log.debug('record details', `${load_record}`);
 
     }
     return {
