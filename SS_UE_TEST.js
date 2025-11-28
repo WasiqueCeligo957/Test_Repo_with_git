@@ -16,7 +16,10 @@ define(['N/record', 'N/log'], (record, log) => {
             id: record_type
         });
         log.debug('record loaded', `${load_record}`);
-
+        const customer = load_record.getvalue({
+            fieldId: 'entity',
+        });
+        log.debug('customer id', `${customer}`);
 
     }
     return {
