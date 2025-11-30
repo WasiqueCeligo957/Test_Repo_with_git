@@ -15,7 +15,6 @@ define(['N/record', 'N/log'], (record, log) => {
                 });
                 //add client script to controll the button
                 form.clientScriptModulePath = 'SuiteScripts/cleint_script_file_id';
-
             }
         } catch (error) {
             log.debug('capture error message', `${error.message}`);
