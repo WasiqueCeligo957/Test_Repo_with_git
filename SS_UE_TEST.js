@@ -53,8 +53,11 @@ define(['N/record', 'N/log'], (record, log) => {
                     value: 'Default notes'
                 });
                 log.debug('default value updated', `${set_user_notes}`);
+                //load_record.commitLine({ sublistId: 'item' });
 
             }
+            const invoiceId = record.save();
+            log.debug('updated record', `${invoiceId}`);
         } catch (error) {
             log.error('afterSubmit Error', `${error.message}`);
         }
