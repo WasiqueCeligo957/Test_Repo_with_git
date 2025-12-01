@@ -6,7 +6,7 @@ define(['N/record', 'N/log'], (record, log) => {
     //add button on record in view mode
     const beforeLoad = (context) => {
         try {
-            if (context.type === context.Type.UserEventType.VIEW) {
+            if (context.type === context.UserEventType.VIEW) {
                 const form = context.form;
                 form.addButton({
                     id: 'custpage_cust_bttn',
@@ -14,7 +14,8 @@ define(['N/record', 'N/log'], (record, log) => {
                     functionname: 'myfunction'
                 });
                 //add client script to controll the button
-                form.clientScriptModulePath = 'SuiteScripts/cleint_script_file_id';
+               // form.clientScriptModulePath = 'SuiteScripts/cleint_script_file_id';
+
             }
         } catch (error) {
             log.debug('capture error message', `${error.message}`);
@@ -22,21 +23,23 @@ define(['N/record', 'N/log'], (record, log) => {
     }
     //aftersubmit function to do some activity
     const afterSubmit = (context) => {
+        try{
         const get_record = context.newRecord;
         const record_type = get_record.type;
         const record_id = get_record.id;
         log.debug('get_record', `record-:${get_record}`);
         log.debug('record type', `${record_type}`);
-        log.debug('record type', `${record_id}`);
+        log.debug('record id', `${record_id}`);
         const load_record = record.load({
-            type: 'record_type',
+            type: record_type,
             id: record_id
         });
         log.debug('record loaded', `${load_record}`);
-        const get_cus_id = load_record.getvalue({
-            fieldid: 'entity'
-        });
-        log.debug('customer id', `${get_cus_id}`);
+        const get_entity=load_record.getvalue({fieldId:'entity'});
+        log.debug('customer Id',`${get_entity}`);
+    }catch(e){
+        error.log('error', `collect error- ${e.message}`);
+    }
 
     }
     return {
