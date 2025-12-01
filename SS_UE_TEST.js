@@ -49,7 +49,8 @@ define(['N/record', 'N/log'], (record, log) => {
                 const set_tax_amt = load_record.setSublistValue({
                     sublistId: 'item',
                     fieldId: 'custcol_user_notes',
-                    line: i
+                    line: i,
+                    value: 'Default notes'
                 });
             }
         } catch (error) {
