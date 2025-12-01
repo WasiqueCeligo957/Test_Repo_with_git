@@ -54,9 +54,16 @@ define(['N/record', 'N/log'], (record, log) => {
                 });
                 log.debug('default value updated', `${set_user_notes}`);
                 //load_record.commitLine({ sublistId: 'item' });
+                const get_item_amt = load_record.getSublistValue({
+                    sublistId: 'item',
+                    fieldId: 'amount',
+                    line: i
+                });
+                log.debug('fetch item amount', `${get_item_amt}`);
+
 
             }
-            const invoiceId = record.save();
+            const invoiceId = load_record.save();
             log.debug('updated record', `${invoiceId}`);
         } catch (error) {
             log.error('afterSubmit Error', `${error.message}`);
