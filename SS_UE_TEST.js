@@ -57,7 +57,6 @@ define(['N/record', 'N/log'], (record, log) => {
             log.error('afterSubmit Error', `${error.message}`);
         }
 
-
     }
     return {
         beforeLoad,
