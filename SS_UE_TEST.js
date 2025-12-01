@@ -46,12 +46,14 @@ define(['N/record', 'N/log'], (record, log) => {
                     line: i
                 });
                 log.debug('item id', `${itemID}`);
-                const set_tax_amt = load_record.setSublistValue({
+                const set_user_notes = load_record.setSublistValue({
                     sublistId: 'item',
                     fieldId: 'custcol_user_notes',
                     line: i,
                     value: 'Default notes'
                 });
+                log.debug('default value updated', `${set_user_notes}`);
+
             }
         } catch (error) {
             log.error('afterSubmit Error', `${error.message}`);
