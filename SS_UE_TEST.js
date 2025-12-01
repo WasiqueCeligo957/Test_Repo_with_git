@@ -35,8 +35,20 @@ define(['N/record', 'N/log'], (record, log) => {
                 id: record_id
             });
             log.debug('record loaded', `${load_record}`);
-        } catch (e) {
-            error.log('error', `collect error- ${e.message}`);
+            const get_entity = load_record.getValue({ fieldId: 'entity' });
+            log.debug('customer Id', `${get_entity}`);
+            const line_count = load_record.getLineCount({ sublistId: 'item' });
+            log.debug('total lines', `${line_count}`);
+            for (let i = 0; i < line_count; i++) {
+                const itemID = load_record.getSublistValue({
+                    sublistId: 'item',
+                    fieldId: 'item',
+                    line: i
+                });
+                log.debug('item id', `${itemID}`);
+            }
+        } catch (error) {
+            log.error('afterSubmit Error', `${error.message}`);
         }
 
     }
