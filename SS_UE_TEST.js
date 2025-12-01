@@ -60,7 +60,7 @@ define(['N/record', 'N/log'], (record, log) => {
                     line: i
                 });
                 log.debug('fetch item amount', `${get_item_amt}`);
-                //Notes
+                //Notes is added
 
 
             }
